@@ -1,33 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-  labels:
-    argocd.argoproj.io/instance: test-hello-world-app
   name: test-hello-world-app
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/crenshaw-dev/argo-cd-11625'
-    path: child-app
-    targetRevision: main
+    repoURL: https://github.com/crenshaw-dev/argo-cd-11625
+    path: resource
   destination:
     server: 'https://kubernetes.default.svc'
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
     syncOptions:
-      - Validate=false
       - CreateNamespace=true
-      - PrunePropagationPolicy=foreground
-      - PruneLast=true
-      - RespectIgnoreDifferences=true
-    retry:
-      limit: 10
-      backoff:
-        duration: 10s
-        factor: 2
-        maxDuration: 3m
