@@ -10,9 +10,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/argoproj/argocd-example-apps.git'
-    path: helm-guestbook
-    targetRevision: master
+    repoURL: 'https://github.com/crenshaw-dev/argo-cd-11625'
+    path: child-app
+    targetRevision: main
   destination:
     server: 'https://kubernetes.default.svc'
   syncPolicy:
