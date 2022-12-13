@@ -10,6 +10,7 @@ spec:
     path: resource
   destination:
     server: 'https://kubernetes.default.svc'
+    namespace: test-hello-world
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
